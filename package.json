@@ -1,0 +1,16 @@
+{
+    "name": "autoglm-prompt-hub",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "AutoGLM Prompt Hub",
+    "scripts": {
+        "dev": "vitepress dev",
+        "build": "vitepress build",
+        "preview": "vitepress preview"
+    },
+    "devDependencies": {
+        "@types/node": "^25.7.0",
+        "vitepress": "^1.6.4",
+        "vue": "^3.5.34"
+    }
+}

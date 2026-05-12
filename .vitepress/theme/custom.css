@@ -1,0 +1,107 @@
+:root {
+    --vp-c-brand-1: #646cff;
+    --vp-c-brand-2: #535bf2;
+    --vp-c-brand-3: #454ce1;
+    --vp-c-brand-soft: rgba(100, 108, 255, 0.14);
+    
+    --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 玻璃拟态效果 */
+.vp-doc h2 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    margin-top: 3rem;
+    color: var(--vp-c-brand-1);
+}
+
+/* --- 仅在 App 提示词页面生效的样式 --- */
+
+.custom-code-blocks div[class*="language-"] {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    margin: 1.5rem 0 !important;
+    overflow: hidden;
+    padding-top: 52px !important;
+}
+
+.custom-code-blocks div[class*="language-"] pre {
+    margin-top: 0 !important;
+}
+
+/* 隐藏 VitePress 原生的不协调元素 */
+.custom-code-blocks div[class*="language-"] > button.copy,
+.custom-code-blocks div[class*="language-"] > span.lang {
+    display: none !important;
+}
+
+/* 自定义动作工具栏 */
+.code-actions-bar {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(40, 40, 40, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
+}
+
+.custom-code-blocks div[class*="language-"]:hover .code-actions-bar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.code-action-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.code-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.code-action-btn.primary:hover {
+    color: var(--vp-c-brand-1);
+}
+
+.code-action-btn.copied {
+    color: #10b981 !important;
+}
+
+/* 语言标签移到左上角 */
+.custom-lang-label {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+}
+
+/* --- 全局样式 --- */
+
+/* 隐藏侧边栏多余的项 */
+.vp-sidebar-group.is-empty {
+    display: none;
+}
