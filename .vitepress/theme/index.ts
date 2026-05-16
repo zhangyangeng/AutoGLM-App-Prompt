@@ -85,7 +85,25 @@ export default {
             })
         }
 
-        onMounted(initCodeBlocks)
+        onMounted(() => {
+            initCodeBlocks()
+
+            // 使用 MutationObserver 监听 DOM 变化，这是处理 HMR 最稳妥的方式
+            const observer = new MutationObserver((mutations) => {
+                const hasCodeBlockChanges = mutations.some(m =>
+                    Array.from(m.addedNodes).some(node =>
+                        node instanceof Element && (node.querySelector('div[class*="language-"]') || node.classList.contains('language-'))
+                    )
+                )
+                if (hasCodeBlockChanges) {
+                    initCodeBlocks()
+                }
+            })
+
+            const contentEl = document.querySelector('#VPContent') || document.body
+            observer.observe(contentEl, { childList: true, subtree: true })
+        })
+
         watch(() => page.value.relativePath, initCodeBlocks)
     }
 }
